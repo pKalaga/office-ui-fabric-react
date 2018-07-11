@@ -10,6 +10,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TestImages } from '../../../common/TestImages';
 import './PersonaExample.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
+import { IRenderFunction } from '../../..';
 const exampleStyles: any = exampleStylesImport;
 
 const examplePersona: IPersonaSharedProps = {
@@ -36,11 +37,11 @@ export class PersonaCustomRenderExample extends React.Component {
     );
   }
 
-  private _onRenderSecondaryText = (props: IPersonaProps): JSX.Element => {
+  private _onRenderSecondaryText = (props: IPersonaProps, render: IRenderFunction<IPersonaProps>): JSX.Element => {
     return (
       <div>
         <Icon iconName={'Suitcase'} className={'ms-JobIconExample'} />
-        {props.secondaryText}
+        {render(props)}
       </div>
     );
   };
